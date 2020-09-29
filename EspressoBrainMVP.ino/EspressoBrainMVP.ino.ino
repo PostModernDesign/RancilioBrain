@@ -3,16 +3,16 @@
 ––––––––––––––––––––––
 Espresso Timer Intention
 ––––––––––––––––––––––
-Digital Control of the Brew Switch_
-  i.e. control over the 3way solenoid and water pump
 
-___  Functions ___ 
-– Set a brew time- turn on pump, open solenoid, count down.
-– Set a preinfusion time and delay time – Open Solinoid, count, close solenoid, count, turn on pump, open solenoid, count down.
+
+___  Current Functions ___ 
+– Set a brew time- turn on pump, open solenoid, count down on OLED, Turn off pump close solenoid.
+
+___  Future Functions ___ 
+– Set a preinfusion time and delay time – Open Solenoid, count, close solenoid, count, turn on pump, open solenoid, count down, etc..
 – Backflush Mode - 15sec on, 15 sec rest - 5 times
 – Manual Mode - Start pump and count up
-___ Logic ___
-– 
+– Target weight mode - set weight and brew up until that weight.
 */
 
 //1st order variables and functions
