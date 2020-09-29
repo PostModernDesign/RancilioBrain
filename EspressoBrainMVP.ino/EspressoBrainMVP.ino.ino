@@ -9,9 +9,12 @@ ___  Current Functions ___ 
 – Set a brew time- turn on pump, open solenoid, count down on OLED, Turn off pump close solenoid.
 
 ___  Future Functions ___ 
+– Menu to change modes and change parameters 
+– Optize code becuase running out of space
 – Set a preinfusion time and delay time – Open Solenoid, count, close solenoid, count, turn on pump, open solenoid, count down, etc..
 – Backflush Mode - 15sec on, 15 sec rest - 5 times
 – Manual Mode - Start pump and count up
+– Wire up Load Cells
 – Target weight mode - set weight and brew up until that weight.
 */
 
@@ -34,25 +37,18 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 //LayoutFunctions
 void topLeftLabel(String j) {
-  display.setTextSize(2);      // Normal 1:1 pixel scale
+  display.setTextSize(2);      // scale 2
   display.setTextColor(SSD1306_WHITE); // Draw white text
   display.setCursor(0, 0);     // Start at top-left corn
   display.print(j);
   }
 
 void middleLeftTime(float j) {
-  display.setTextSize(5);      // Normal 1:1 pixel scale
+  display.setTextSize(5);      // scale 5
   display.setTextColor(SSD1306_WHITE); // Draw white text
-  display.setCursor(0, 24);     // Start at top-left corn
-  display.print(j, 1);
+  display.setCursor(0, 24);     // these are coordinates(x, y)
+  display.print(j, 1); // in this sketch this parameter is the time value aka (tV)
   }
-
-//void bottomLeftFunction(String j) {
-//  display.setTextSize(1);      // Normal 1:1 pixel scale
-//  display.setTextColor(SSD1306_WHITE); // Draw white text
-//  display.setCursor(45, 54);     // Start at top-left corn
-//  display.print(j);
-//  }
 
 
 /*–––––––––––––––––––––––––––––
@@ -80,7 +76,8 @@ void buttonDetect(){
 }
 
 //Rotary Encoder Turn Detection
-int pinA  u
+//you need to use these pins because the support interupt
+int pinA = 3;
 int pinB = 2;
 int pinAStateCurrent = LOW;
 int pinAStateLast = pinAStateCurrent;
@@ -102,6 +99,8 @@ float countDownDefault;
 /*–––––––––––––––––––––––––––––
 Menu Setup
 –––––––––––––––––––––––––––––*/
+//to do one day
+
 
 /*–––––––––––––––––––––––––––––
 Relay Setup
@@ -208,6 +207,7 @@ if (EEPROM.read(256) != 123){
 
 
 void loop() {
+
 if (turnDetected){
   turnDetected=false;
   display.clearDisplay();
