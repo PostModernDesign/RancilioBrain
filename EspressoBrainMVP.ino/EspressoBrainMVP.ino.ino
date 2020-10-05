@@ -171,13 +171,10 @@ if (EEPROM.read(256) != 123){
   EEPROM.write(256, 123);
   storedTime = 0;
   }
- else
+ else {
   EEPROM.get(0, storedTime);
-//  Serial.println("the stored time is: ");
-//  Serial.println(storedTime);
+ }
   tV = storedTime*0.1;
-//  Serial.println("the time Value is");
-//  Serial.println(tV);
 
 //  tactile setup
   pinMode (buttonPin, INPUT_PULLUP);
