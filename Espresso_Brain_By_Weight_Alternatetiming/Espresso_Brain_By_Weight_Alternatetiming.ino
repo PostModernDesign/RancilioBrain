@@ -194,7 +194,7 @@ void startingDisplay(){
   }
 
 
-//-------------- This function adds or subtracts .1 to the target weight
+//-------------- This function adds or subtracts .1 to the target weight if you turn left or right
 void increment(){
     turnDetected = true;
     //Rotation
