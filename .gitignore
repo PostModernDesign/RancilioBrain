@@ -3,6 +3,3 @@
 
 # IDE meta files
 .idea
-
-# Auto-generated load cell file
-*.step
